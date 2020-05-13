@@ -1,0 +1,27 @@
+Root SRC folder
+1. index.js - To create store and call the App element using Provider element
+Actions – define the various actions
+Index.js – define objects that can be used as arguments (in place of actions) while calling reducers
+1.	userAction – object with 3 fields, Login, Register, forgetPassword
+2.	loginInfo – object with user name and password
+3.	registerInfo – object with all fields required for new user registration
+4.	forgetPwdInfo – object with fields required for password reset
+Components – visual components to render. Header or footer JS files can be kept here, as they contain static elements and doesn’t need Redux state management
+1.	Header.js
+2.	Footer.js – can have sub components for copyright, etc.,
+3.	Homepage.js – it can have login as default component with a button for Register
+4.	Register.js – visual elements for register screen
+5.	forgetPassword.js – visual elements for forget password screen
+6.	salesPortal.js – the page where we land after successful signin. At the moment I can be dummy component with Success message
+7.	loginUnsuccess.js – login error information
+Containers – Components that dispatch actions and updates states
+1.	userAction.js – dispatch userAction object and connect() with respective visual component to render on screen
+2.	login.js – dispatch loginInfo object and connect() with salesPortal.js or loginUnsuccess.js
+3.	register.js – dispatch registerInfo and connect() with Homepage.js with login option enabled
+4.	forgetPassword.js – dispatch forgetPwdInfo and connect() with Homepage.js with login option enabled
+Reducers – that accepts current state and action to return next state
+1.	Index.js – combine reducers
+2.	userActionReducer.js – called with userAction object and returns state as per user preferred action
+3.	loginReducer.js – called with loginInfo object. Performs express js API call for user login validation and returns state success or failure
+4.	registerReducer.js – called with registerInfo. Performs express js API call to register the user. Where to perform user input validation? Need to discuss
+5.	forgetPasswordReducer.js – called with forgetPwdInfo. Performs express js API call to reset the password. Returns state success or failure
